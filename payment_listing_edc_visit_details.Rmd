@@ -1,0 +1,62 @@
+---
+title: "RADIANCE II - Payment Listing (Source: EDC Visit Details)"
+#author: "HMB"
+#date: "9/03/2020"
+#last update: "9/16/2020"
+#symbolic link to EDC data added
+#cleanup added
+
+output: html_document
+---
+
+```{r, echo=FALSE}
+htmltools::img(src = knitr::image_uri("logo.jpg"), 
+               alt = 'logo', 
+               style = 'position:absolute; top:0; right:0; padding:10px;')
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Details
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(dplyr)
+library(readxl)
+library(writexl)
+library(sas7bdat)
+library(tidyverse)
+library(sqldf)
+library(knitr)
+library(kableExtra)
+```
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(haven)
+
+rd_f_rand <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_rand.sas7bdat", NULL)
+rd_f_visitdetails_screening <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_screening.sas7bdat", NULL)
+rd_f_visitdetails_procedure <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_procedure.sas7bdat", NULL)
+rd_f_visitdetails_preprocedure <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_preprocedure.sas7bdat", NULL)
+rd_f_visitdetails_predischarge <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_predischarge.sas7bdat", NULL)
+rd_f_visitdetails_p2 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_p2.sas7bdat", NULL)
+rd_f_visitdetails_followupsv3_ <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followupsv3_.sas7bdat", NULL)
+rd_f_visitdetails_followups2 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followups2.sas7bdat", NULL)
+rd_f_visitdetails_followups_v8 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followups_v8.sas7bdat", NULL)
+rd_f_visitdetails_followups_v6 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followups_v6.sas7bdat", NULL)
+rd_f_visitdetails_followups_v1 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followups_v1.sas7bdat", NULL)
+rd_f_visitdetails_followups <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followups.sas7bdat", NULL)
+rd_f_visitdetails_followup_tpv <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followup_tpv.sas7bdat", NULL)
+rd_f_visitdetails_followup_8 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followup_8.sas7bdat", NULL)
+rd_f_visitdetails_followup_6 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followup_6.sas7bdat", NULL)
+rd_f_visitdetails_followup_5 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followup_5.sas7bdat", NULL)
+rd_f_visitdetails_followup_3 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followup_3.sas7bdat", NULL)
+rd_f_visitdetails_followup_1 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_followup_1.sas7bdat", NULL)
+rd_f_visitdetails_final <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_final.sas7bdat", NULL)
+rd_f_visitdetails_discharged2 <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_discharged2.sas7bdat", NULL)
+rd_f_visitdetails_cobaseline <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_cobaseline.sas7bdat", NULL)
+rd_f_visitdetails_baseline <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_f_visitdetails_baseline.sas7bdat", NULL)
+rd_payments <- read_sas("./data/raw_data/RADIANCEII_RDE-SASD/rd_payments.sas7bdat", NULL)
+```
