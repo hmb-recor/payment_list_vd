@@ -349,3 +349,8 @@ vd_view_payments_all %>%
                            lengthMenu = list(c(10,25,50,-1),
                                              c(10,25,50,"All"))))
 ```
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+rm(list = ls())
+gc()
+```
